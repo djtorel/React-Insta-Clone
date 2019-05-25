@@ -19,11 +19,12 @@ class App extends Component {
   render() {
     const {
       state: { posts },
+      renderPosts,
     } = this;
     return (
       <div>
         <SearchBar />
-        {this.renderPosts(posts)}
+        {renderPosts(posts)}
       </div>
     );
   }
