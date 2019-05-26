@@ -1,7 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Header = styled.header.attrs({
+  className: `flex justify-between`,
+})``;
 
 const SearchBar = props => (
-  <header>
+  <Header>
     <div>
       <div>Logo</div>
       <div>Company Name</div>
@@ -14,7 +19,7 @@ const SearchBar = props => (
       <div>Heart</div>
       <div>Profile Icon</div>
     </div>
-  </header>
+  </Header>
 );
 
 export default SearchBar;
