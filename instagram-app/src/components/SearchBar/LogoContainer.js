@@ -20,7 +20,7 @@ const CameraIcon = styled.a.attrs({
 const Divider = styled.div.attrs({
   className: `
     border-l border-gray-400
-    ml-3 mr-3
+    ml-3 mr-3 xl:ml-5 xl:mr-5
     h-8 md:h-10
   `,
 })``;
