@@ -14,7 +14,7 @@ const MainContainer = styled.div.attrs({
 })``;
 
 const ContentContainer = styled.div.attrs({
-  className: `my-4`,
+  className: `mt-5 mx-1`,
 })``;
 
 class App extends Component {
