@@ -13,6 +13,10 @@ const MainContainer = styled.div.attrs({
   className: `w-full md:w-11/12 lg:w-4/5 xl:w-3/5`,
 })``;
 
+const ContentContainer = styled.div.attrs({
+  className: `my-4`,
+})``;
+
 class App extends Component {
   constructor() {
     super();
@@ -21,19 +25,19 @@ class App extends Component {
     };
   }
 
-  renderPosts = posts =>
-    posts.map((post, i) => <PostContainer post={post} key={i} />);
-
   render() {
     const {
       state: { posts },
-      renderPosts,
     } = this;
     return (
       <Main>
         <MainContainer>
           <SearchBar />
-          {renderPosts(posts)}
+          <ContentContainer>
+            {posts.map((post, i) => (
+              <PostContainer post={post} key={i} />
+            ))}
+          </ContentContainer>
         </MainContainer>
       </Main>
     );
