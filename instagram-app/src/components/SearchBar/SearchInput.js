@@ -21,7 +21,7 @@ const SearchIcon = styled.span.attrs({
 
 const Input = styled.input.attrs({
   className: `
-    rounded h-12 pl-10 bg-gray-600 shadow-inner w-full
+    rounded h-12 pl-10 bg-gray-600 shadow-inner w-full text-gray-400
   `,
 })`
   ::placeholder {
