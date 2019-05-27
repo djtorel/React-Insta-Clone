@@ -30,7 +30,7 @@ const Input = styled.input.attrs({
   }
 `;
 
-const SearchInput = props => {
+const SearchInput = () => {
   const [input, setInput] = useState('');
   const handleInput = e => setInput(e.target.value);
   return (

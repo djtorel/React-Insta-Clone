@@ -28,7 +28,7 @@ const User = styled.a.attrs({
   `,
 })``;
 
-const NavContainer = props => (
+const NavContainer = () => (
   <Container>
     <Compass href="#" />
     <Heart href="#" />

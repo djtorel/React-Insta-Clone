@@ -12,7 +12,7 @@ const Header = styled.header.attrs({
   `,
 })``;
 
-const SearchBar = props => {
+const SearchBar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const handleWindowWidth = () => setWindowWidth(window.innerWidth);
   useEffect(() => {
