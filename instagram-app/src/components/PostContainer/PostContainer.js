@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import './PostContainer.css';
 import CommentSection from '../CommentSection/CommentSection';
 
 const Container = styled.div.attrs({

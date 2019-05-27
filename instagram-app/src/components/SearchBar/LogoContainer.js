@@ -31,7 +31,6 @@ const Company = styled.div.attrs({
     md:text-xl lg:text-2xl
   `,
 })`
-  @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
   font-family: Pacifico;
 `;
 
