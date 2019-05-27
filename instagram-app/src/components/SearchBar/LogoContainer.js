@@ -39,7 +39,9 @@ const LogoContainer = ({ windowWidth }) => {
   return (
     <Container>
       <CameraIcon href="#" />
-      {windowWidth > 640 ? [<Divider />, <Company>Vanigram</Company>] : ''}
+      {windowWidth > 640
+        ? [<Divider key="divider" />, <Company key="name">Vanigram</Company>]
+        : ''}
     </Container>
   );
 };
