@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   renderPosts = posts =>
-    posts.map((post, i) => <PostContainer posts={post} key={i} />);
+    posts.map((post, i) => <PostContainer post={post} key={i} />);
 
   render() {
     const {
