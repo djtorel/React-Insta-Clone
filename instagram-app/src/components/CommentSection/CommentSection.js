@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './CommentSection.css';
 import Comment from './Comment';
 
-const CommentSection = ({ comments }) => {
+const CommentSection = ({ comments, timestamp }) => {
   const renderComments = () =>
     comments.map(({ username, text }, i) => (
       <Comment key={i} username={username} text={text} />
@@ -12,7 +12,7 @@ const CommentSection = ({ comments }) => {
   return (
     <div>
       {renderComments()}
-      <div>time ago</div>
+      <div>{timestamp}</div>
       <div>
         <input name="" value="" type="text" placeholder="Add a comment..." />
         <div>Comment Icon</div>
@@ -30,4 +30,5 @@ CommentSection.propTypes = {
       text: PropTypes.string.isRequired,
     }),
   ),
+  timestamp: PropTypes.string,
 };
