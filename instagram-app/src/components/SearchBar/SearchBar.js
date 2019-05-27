@@ -7,7 +7,7 @@ import NavContainer from './NavContainer';
 
 const Header = styled.header.attrs({
   className: `
-    flex justify-between items-center bg-gray-800 h-20
+    flex justify-between items-center bg-gray-800 h-20 shadow-md
     p-2 md:px-5 lg:px-10
   `,
 })``;
