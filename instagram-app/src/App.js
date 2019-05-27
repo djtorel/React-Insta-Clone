@@ -21,7 +21,8 @@ class App extends Component {
     };
   }
 
-  renderPosts = posts => posts.map(post => <PostContainer posts={post} />);
+  renderPosts = posts =>
+    posts.map((post, i) => <PostContainer posts={post} key={i} />);
 
   render() {
     const {
