@@ -30,11 +30,21 @@ const Input = styled.input.attrs({
   }
 `;
 
-const SearchInput = props => (
-  <Container>
-    <SearchIcon />
-    <Input name="search" placeholder="Search" type="text" value="" />
-  </Container>
-);
+const SearchInput = props => {
+  const [input, setInput] = useState('');
+  const handleInput = e => setInput(e.target.value);
+  return (
+    <Container>
+      <SearchIcon />
+      <Input
+        name="search"
+        placeholder="Search"
+        type="text"
+        value={input}
+        onChange={handleInput}
+      />
+    </Container>
+  );
+};
 
 export default SearchInput;
