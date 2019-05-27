@@ -21,20 +21,19 @@ class App extends Component {
     };
   }
 
-  renderPosts = posts =>
-    posts.map((post, i) => <PostContainer post={post} key={i} />);
-
   render() {
     const {
       state: { posts },
-      renderPosts,
     } = this;
     return (
       <Main>
         <MainContainer>
           <SearchBar />
-          {renderPosts(posts)}
-        </MainContainer>
+          <ContentContainer>
+            {posts.map((post, i) => (
+              <PostContainer post={post} key={i} />
+            ))}
+          </ContentContainer>
       </Main>
     );
   }
