@@ -8,9 +8,9 @@ const Comment = ({ username, text }) => (
   </div>
 );
 
-export default Comment;
-
 Comment.propTypes = {
   username: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };
+
+export default Comment;

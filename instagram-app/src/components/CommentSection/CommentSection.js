@@ -21,8 +21,6 @@ const CommentSection = ({ comments, timestamp }) => {
   );
 };
 
-export default CommentSection;
-
 CommentSection.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
@@ -32,3 +30,5 @@ CommentSection.propTypes = {
   ),
   timestamp: PropTypes.string,
 };
+
+export default CommentSection;

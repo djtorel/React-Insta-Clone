@@ -33,8 +33,6 @@ const PostContainer = ({
   </div>
 );
 
-export default PostContainer;
-
 PostContainer.propTypes = {
   post: PropTypes.shape({
     username: PropTypes.string.isRequired,
@@ -45,3 +43,5 @@ PostContainer.propTypes = {
     comments: PropTypes.array.isRequired,
   }),
 };
+
+export default PostContainer;
