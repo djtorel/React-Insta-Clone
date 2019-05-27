@@ -12,6 +12,7 @@ const Header = styled.header.attrs({
 const SearchBar = props => (
   <Header>
     <LogoContainer />
+    <div />
     <SearchInput />
     <NavContainer />
   </Header>

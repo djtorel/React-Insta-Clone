@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div.attrs({
-  className: ``,
+  className: `w-1/3`,
 })`
   position: relative;
   padding: 0;
@@ -20,7 +20,7 @@ const SearchIcon = styled.span.attrs({
 `;
 
 const Input = styled.input.attrs({
-  className: `rounded h-10 pl-10 bg-gray-600 shadow-inner`,
+  className: `rounded h-10 pl-10 bg-gray-600 shadow-inner w-full`,
 })`
   ::placeholder {
     color: #cbd5e0;
@@ -31,7 +31,7 @@ const Input = styled.input.attrs({
 const SearchInput = props => (
   <Container>
     <SearchIcon />
-    <Input name="" placeholder="Search" type="text" value="" />
+    <Input name="search" placeholder="Search" type="text" value="" />
   </Container>
 );
 
