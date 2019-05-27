@@ -1,26 +1,35 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import CommentSection from '../CommentSection/CommentSection';
+
+const Heart = styled.div.attrs({
+  className: `jam jam-heart`,
+})``;
+
+const MessageBubble = styled.div.attrs({
+  className: `jam jam-message-alt`,
+})``;
 
 const PostContainer = ({
   post: { username, thumbnailUrl, imageUrl, likes, timestamp, comments },
 }) => (
   <div>
     <div>
-      <div>Author Picture</div>
-      <div>Author Name</div>
+      <img src={thumbnailUrl} alt="" />
+      <div>{username}</div>
     </div>
-    <div>Picture</div>
+    <img src={imageUrl} alt="" />
     <div>
-      <div>Heart</div>
-      <div>Quote Bubble</div>
+      <Heart />
+      <MessageBubble />
     </div>
     <div>
-      <div>Number of Likes</div>
+      <div>{likes}</div>
       <div>likes</div>
     </div>
-    <CommentSection comments={comments} />
+    <CommentSection comments={comments} timestamp={timestamp} />
   </div>
 );
 
