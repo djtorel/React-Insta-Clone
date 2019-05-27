@@ -1,11 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const Container = styled.div.attrs({
+  className: `bg-gray-200 mb-2 p-2 rounded shadow-md`,
+})``;
+
+const UserName = styled.span.attrs({
+  className: ``,
+})`
+  font-family: Roboto;
+  font-weight: 500;
+`;
+
+const CommentText = styled.span.attrs({
+  className: ``,
+})`
+  font-family: Roboto;
+`;
+
 const Comment = ({ username, text }) => (
-  <div>
-    <div>{username}</div>
-    <div>{text}</div>
-  </div>
+  <Container>
+    <UserName>{username}</UserName>
+    <CommentText> {text}</CommentText>
+  </Container>
 );
 
 Comment.propTypes = {

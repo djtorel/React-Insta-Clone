@@ -24,6 +24,7 @@ const AuthorName = styled.span.attrs({
   className: 'ml-3 text-lg',
 })`
   font-family: Roboto;
+  font-weight: 500;
 `;
 
 const PostImg = styled.img.attrs({
