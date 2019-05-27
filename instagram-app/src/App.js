@@ -10,7 +10,7 @@ const Main = styled.main.attrs({
   className: `flex flex-col min-h-screen items-center bg-gray-500`,
 })``;
 const MainContainer = styled.div.attrs({
-  className: `w-3/5`,
+  className: `w-full md:w-11/12 lg:w-4/5 xl:w-3/5`,
 })``;
 
 class App extends Component {

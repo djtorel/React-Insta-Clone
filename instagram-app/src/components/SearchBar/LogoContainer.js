@@ -1,31 +1,58 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Container = styled.div.attrs({
-  className: `flex items-center w-1/3`,
+  className: `
+  flex items-center
+  mr-3 m:m-0
+  md:w-1/6
+  `,
 })``;
 
 const CameraIcon = styled.a.attrs({
-  className: `jam jam-camera-alt text-gray-400 xl:text-4xl lg:text-3xl md:text-xl`,
+  className: `
+    jam jam-camera-alt text-gray-400
+    text-4xl
+  `,
 })``;
 
 const Divider = styled.div.attrs({
-  className: `border-l border-gray-400 xl:h-10 md:h-8 ml-4 mr-4`,
+  className: `
+    border-l border-gray-400
+    ml-3 mr-3
+    h-8 md:h-10
+  `,
 })``;
 
 const Company = styled.div.attrs({
-  className: `xl:text-3xl lg:text-2xl md:text-xl text-gray-400`,
+  className: `
+    text-gray-400
+    md:text-xl lg:text-2xl
+  `,
 })`
   @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
   font-family: Pacifico;
 `;
 
-const LogoContainer = props => (
-  <Container>
-    <CameraIcon href="#" />
-    <Divider />
-    <Company>Vanigram</Company>
-  </Container>
-);
+const LogoContainer = ({ windowWidth }) => {
+  return (
+    <Container>
+      <CameraIcon href="#" />
+      {windowWidth > 640 ? (
+        <>
+          <Divider />
+          <Company>Vanigram</Company>
+        </>
+      ) : (
+        ''
+      )}
+    </Container>
+  );
+};
+
+LogoContainer.propTypes = {
+  windowWidth: PropTypes.number,
+};
 
 export default LogoContainer;
