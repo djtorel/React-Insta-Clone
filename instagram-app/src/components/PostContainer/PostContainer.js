@@ -55,6 +55,7 @@ const LikesContainer = styled.div.attrs({
   className: `flex text-sm`,
 })`
   font-family: Roboto;
+  font-weight: 500;
 `;
 
 const PostContainer = ({

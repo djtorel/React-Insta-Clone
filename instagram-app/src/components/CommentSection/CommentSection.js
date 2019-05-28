@@ -6,18 +6,43 @@ import './CommentSection.css';
 import Comment from './Comment';
 
 const Container = styled.section.attrs({
-  className: `bg-gray-400 p-2 rounded shadow-md`,
+  className: `flex flex-col bg-gray-400 p-2 rounded shadow-md`,
 })``;
 
 const CommentsContainer = styled.div.attrs({
-  className: `flex flex-col`,
+  className: ``,
 })``;
 
-const CommentDivider = styled.div.attrs({
-  className: `w-4/5 border-b border-gray-500 self-center my-2`,
+const TimeStamp = styled.div.attrs({
+  className: `ml-2 mt-1 text-gray-600 text-sm`,
 })`
+  font-family: Roboto;
+  font-weight: 500;
+  opacity: 0.8;
+`;
+
+const Divider = styled.div.attrs({
+  className: `w-4/5 self-center bg-gray-500 my-3`,
+})`
+  height: 1px;
   opacity: 0.6;
 `;
+
+const InputContainer = styled.div.attrs({
+  className: `flex justify-between items-center mb-2`,
+})``;
+
+const CommentInput = styled.input.attrs({
+  className: `appearance-none w-full bg-gray-200 h-full pl-3 rounded-l`,
+})`
+  ::placeholder {
+    color: #97266d;
+  }
+`;
+
+const MessageButton = styled.button.attrs({
+  className: `jam jam-message-writing text-2xl p-2 text-gray-200 bg-gray-600 rounded-r`,
+})``;
 
 const CommentSection = ({ comments, timestamp }) => {
   return (
@@ -26,13 +51,18 @@ const CommentSection = ({ comments, timestamp }) => {
         {comments.map(({ username, text }, i) => (
           <Comment key={i} username={username} text={text} />
         ))}
-        <CommentDivider />
       </CommentsContainer>
-      <div>{timestamp}</div>
-      <div>
-        <input name="" value="" type="text" placeholder="Add a comment..." />
-        <div>Comment Icon</div>
-      </div>
+      <TimeStamp>{timestamp}</TimeStamp>
+      <Divider />
+      <InputContainer>
+        <CommentInput
+          name=""
+          value=""
+          type="text"
+          placeholder="Add a comment..."
+        />
+        <MessageButton />
+      </InputContainer>
     </Container>
   );
 };
