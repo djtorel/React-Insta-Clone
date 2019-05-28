@@ -41,7 +41,9 @@ const CommentInput = styled.input.attrs({
 `;
 
 const MessageButton = styled.button.attrs({
-  className: `jam jam-message-writing text-2xl p-2 text-gray-200 bg-gray-600 rounded-r`,
+  className: `
+    jam jam-message-writing text-2xl p-2 text-gray-200 bg-gray-600 rounded-r
+  `,
 })``;
 
 const CommentSection = ({ comments, timestamp }) => {
