@@ -28,6 +28,7 @@ const Divider = styled.div.attrs({
   opacity: 0.6;
 `;
 
+const InputForm = styled.form.attrs({
   className: `flex items-stretch`,
 })``;
 
@@ -57,7 +58,7 @@ const CommentSection = ({ comments, timestamp }) => {
       </CommentsContainer>
       <TimeStamp>{timestamp}</TimeStamp>
       <Divider />
-      <InputContainer>
+      <InputForm>
         <CommentInput
           name="comment"
           value={inputText}
@@ -66,7 +67,7 @@ const CommentSection = ({ comments, timestamp }) => {
           onChange={e => setInputText(e.target.value)}
         />
         <MessageButton />
-      </InputContainer>
+      </InputForm>
     </Container>
   );
 };
