@@ -28,12 +28,11 @@ const Divider = styled.div.attrs({
   opacity: 0.6;
 `;
 
-const InputContainer = styled.div.attrs({
-  className: `flex justify-between items-center`,
+  className: `flex items-stretch`,
 })``;
 
 const CommentInput = styled.input.attrs({
-  className: `appearance-none w-full bg-gray-200 h-full pl-3 rounded-l`,
+  className: `appearance-none w-full min-h-full bg-gray-200 pl-3 rounded-l`,
 })`
   ::placeholder {
     color: #97266d;
