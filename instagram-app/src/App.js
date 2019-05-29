@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
 import PostContainer from './components/PostContainer/PostContainer';
-import data from './dummy-data';
+import dummyData from './dummy-data';
 
 const Main = styled.main.attrs({
   className: `flex flex-col min-h-screen items-center bg-gray-500`,
@@ -21,8 +21,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      posts: data,
+      posts: [],
     };
+  }
+
+  componentDidMount() {
+    this.setState({ posts: dummyData });
   }
 
   render() {
