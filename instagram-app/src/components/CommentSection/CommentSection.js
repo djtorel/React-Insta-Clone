@@ -33,7 +33,7 @@ const InputForm = styled.form.attrs({
 })``;
 
 const CommentInput = styled.input.attrs({
-  className: `appearance-none w-full min-h-full bg-gray-200 pl-3 rounded-l`,
+  className: `appearance-none w-full bg-gray-200 pl-3 rounded-l text-gray-700`,
 })`
   ::placeholder {
     color: #97266d;
