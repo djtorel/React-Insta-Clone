@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -47,6 +47,8 @@ const MessageButton = styled.button.attrs({
 })``;
 
 const CommentSection = ({ comments, timestamp }) => {
+  const [inputText, setInputText] = useState('');
+
   return (
     <Container>
       <CommentsContainer>
@@ -58,10 +60,11 @@ const CommentSection = ({ comments, timestamp }) => {
       <Divider />
       <InputContainer>
         <CommentInput
-          name=""
-          value=""
+          name="comment"
+          value={inputText}
           type="text"
           placeholder="Add a comment..."
+          onChange={e => setInputText(e.target.value)}
         />
         <MessageButton />
       </InputContainer>
