@@ -29,7 +29,7 @@ const Divider = styled.div.attrs({
 `;
 
 const InputContainer = styled.div.attrs({
-  className: `flex justify-between items-center mb-2`,
+  className: `flex justify-between items-center`,
 })``;
 
 const CommentInput = styled.input.attrs({
