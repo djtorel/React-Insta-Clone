@@ -4,7 +4,6 @@ const dummyData = [
     username: 'philzcoffee',
     thumbnailUrl:
       'https://tk-assets.lambdaschool.com/ecd33d34-c124-4b75-92d2-e5c52c171ed8_11201517_887808411287357_1307163552_a.jpg',
-
     imageUrl:
       'https://tk-assets.lambdaschool.com/69cf901b-f96d-466e-a745-ff2a01effac9_philz-image.jpg',
     likes: 400,
@@ -14,14 +13,17 @@ const dummyData = [
         username: 'philzcoffee',
         text:
           "We've got more than just delicious coffees to offer at our shops!",
+        id: 1559202012663,
       },
       {
         username: 'biancasaurus',
         text: 'Looks delicious!',
+        id: 1559199774009,
       },
       {
         username: 'martinseludo',
         text: "Can't wait to try it!",
+        id: 1559195107683,
       },
     ],
   },
@@ -38,22 +40,27 @@ const dummyData = [
       {
         username: 'twitch',
         text: 'Epic Street Fighter action here in Las Vegas at #EVO2017!',
+        id: 1559202158063,
       },
       {
         username: 'michaelmarzetta',
         text: 'Omg that match was crazy',
+        id: 1559194296233,
       },
       {
         username: 'themexican_leprechaun',
         text: 'What a setup',
+        id: 1559203203955,
       },
       {
         username: 'dennis_futbol',
         text: 'It that injustice',
+        id: 1559199897492,
       },
       {
         username: 'dennis_futbol',
         text: 'Is',
+        id: 1559203736646,
       },
     ],
   },
@@ -70,17 +77,28 @@ const dummyData = [
       {
         username: 'playhearthstone',
         text: 'Love this shot!',
+        id: 1559198142726,
       },
       {
         username: 'awaywetravel',
         text: 'Yosemite is my most favorite place in the universe',
+        id: 1559196547042,
       },
       {
         username: 'awesomebt28',
         text: 'I like how Half Dome looks so old and useless',
+        id: 1559198795473,
       },
     ],
   },
 ];
 
 export default dummyData;
+
+dummyData.map(post => ({
+  ...post,
+  comments: post.comments.map(comment => ({
+    ...comment,
+    id: Math.floor(Math.random() * 10000000) + Date.now(),
+  })),
+}));
