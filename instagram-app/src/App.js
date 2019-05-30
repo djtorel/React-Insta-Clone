@@ -64,3 +64,4 @@ class App extends Component {
 }
 
 export default App;
+// MVP Day 2 Completed
