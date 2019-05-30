@@ -27,6 +27,10 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ posts: dummyData });
+  }
+
   searchHandler = searchTerm =>
     this.setState({
       filteredPosts: this.state.posts.filter(post =>
@@ -50,10 +54,6 @@ class App extends Component {
     this.findComments({ postId }),
     this.setComments,
   ];
-
-  componentDidMount() {
-    this.setState({ posts: dummyData });
-  }
 
   render() {
     const {
