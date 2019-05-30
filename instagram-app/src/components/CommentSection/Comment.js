@@ -7,14 +7,14 @@ const Container = styled.div.attrs({
 })``;
 
 const UserName = styled.span.attrs({
-  className: ``,
+  className: `text-gray-800`,
 })`
   font-family: Roboto;
   font-weight: 500;
 `;
 
 const CommentText = styled.span.attrs({
-  className: ``,
+  className: `text-gray-700`,
 })`
   font-family: Roboto;
 `;

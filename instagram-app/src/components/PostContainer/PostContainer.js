@@ -40,7 +40,7 @@ const IconContainer = styled.div.attrs({
 })``;
 
 const Heart = styled.div.attrs({
-  className: `mr-3 jam `,
+  className: `mr-3 jam text-gray-700`,
 })`
   cursor: pointer;
   ${({ liked, className }) =>
@@ -48,13 +48,13 @@ const Heart = styled.div.attrs({
 `;
 
 const MessageBubble = styled.div.attrs({
-  className: `jam jam-message-alt`,
+  className: `jam jam-message-alt text-gray-700`,
 })`
   cursor: pointer;
 `;
 
 const LikesContainer = styled.div.attrs({
-  className: `flex text-sm`,
+  className: `flex text-sm text-gray-700`,
 })`
   font-family: Roboto;
   font-weight: 500;
