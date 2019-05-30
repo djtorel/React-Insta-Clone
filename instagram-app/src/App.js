@@ -28,7 +28,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ posts: dummyData });
+    window.localStorage.length === 0 &&
+      window.localStorage.setItem('posts', JSON.stringify(dummyData));
+    this.setState({ posts: JSON.parse(window.localStorage.getItem('posts')) });
+  }
+
+  componentDidUpdate() {
+    JSON.stringify(this.state.posts) !== window.localStorage.getItem('posts') &&
+      window.localStorage.setItem('posts', JSON.stringify(this.state.posts));
   }
 
   searchHandler = searchTerm =>
@@ -40,20 +47,15 @@ class App extends Component {
   setSearch = value => this.setState({ searchTerm: value });
   useSearch = () => [this.state.searchTerm, this.setSearch, this.searchHandler];
 
-  setComments = ({ postId, comment }) =>
+  setComments = postId => comments =>
     this.setState({
       posts: this.state.posts.map(post =>
-        post.id === postId
-          ? { ...post, comments: [...post.comments, comment] }
-          : post,
+        post.id === postId ? { ...post, comments } : post,
       ),
     });
-  findComments = ({ postId }) =>
+  findComments = postId =>
     this.state.posts.filter(post => post.id === postId)[0].comments;
-  useComments = ({ postId }) => [
-    this.findComments({ postId }),
-    this.setComments,
-  ];
+  useComments = postId => [this.findComments(postId), this.setComments(postId)];
 
   render() {
     const {

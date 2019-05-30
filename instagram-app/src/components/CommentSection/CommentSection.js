@@ -48,19 +48,19 @@ const MessageButton = styled.button.attrs({
 
 const CommentSection = ({ timestamp, postId, useComments }) => {
   const [inputText, setInputText] = useState('');
-  const [commentsState, setCommentsState] = useComments({ postId });
+  const [commentsState, setCommentsState] = useComments(postId);
 
   const handleSubmitComment = e => {
     e.preventDefault();
     if (inputText.length > 0) {
-      setCommentsState({
-        postId,
-        comment: {
+      setCommentsState([
+        ...commentsState,
+        {
           id: Math.floor(Math.random() * 100000000) + Date.now(),
           username: 'BobsUncle',
           text: inputText,
         },
-      });
+      ]);
       setInputText('');
     }
   };
