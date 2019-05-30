@@ -46,8 +46,14 @@ const MessageButton = styled.button.attrs({
   `,
 })``;
 
-const CommentSection = ({ comments, timestamp }) => {
+const CommentSection = ({ postId, comments, timestamp, handlePost }) => {
   const [inputText, setInputText] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    handlePost(postId, 'BobsUncle', inputText);
+    setInputText('');
+  };
 
   return (
     <Container>
@@ -58,7 +64,7 @@ const CommentSection = ({ comments, timestamp }) => {
       </CommentsContainer>
       <TimeStamp>{timestamp}</TimeStamp>
       <Divider />
-      <InputForm>
+      <InputForm onSubmit={handleSubmit}>
         <CommentInput
           name="comment"
           value={inputText}

@@ -59,7 +59,8 @@ const LikesContainer = styled.div.attrs({
 `;
 
 const PostContainer = ({
-  post: { username, thumbnailUrl, imageUrl, likes, timestamp, comments },
+  post: { id, username, thumbnailUrl, imageUrl, likes, timestamp, comments },
+  handlePostComment,
 }) => (
   <Container>
     <PostHeader>
@@ -78,7 +79,12 @@ const PostContainer = ({
         </LikesContainer>
       </LikesSection>
     </PostHeader>
-    <CommentSection comments={comments} timestamp={timestamp} />
+    <CommentSection
+      postId={id}
+      comments={comments}
+      timestamp={timestamp}
+      handlePost={handlePostComment}
+    />
   </Container>
 );
 

@@ -29,9 +29,26 @@ class App extends Component {
     this.setState({ posts: dummyData });
   }
 
+  componentDidUpdate() {
+    console.log('Component Updated');
+  }
+
+  handlePostComment = (postId, username, text) => {
+    const newState = this.state.posts.map(post => {
+      return post.id === postId
+        ? { ...post, comments: [...post.comments, { username, text }] }
+        : post;
+    });
+
+    console.log(newState);
+
+    this.setState(newState);
+  };
+
   render() {
     const {
       state: { posts },
+      handlePostComment,
     } = this;
     return (
       <Main>
@@ -39,7 +56,11 @@ class App extends Component {
           <SearchBar />
           <ContentContainer>
             {posts.map((post, i) => (
-              <PostContainer post={post} key={i} />
+              <PostContainer
+                post={post}
+                key={i}
+                handlePostComment={handlePostComment}
+              />
             ))}
           </ContentContainer>
         </MainContainer>
