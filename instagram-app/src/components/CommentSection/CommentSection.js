@@ -48,17 +48,27 @@ const MessageButton = styled.button.attrs({
 
 const CommentSection = ({ comments, timestamp }) => {
   const [inputText, setInputText] = useState('');
+  const [commentsState, setCommentsState] = useState(comments);
+
+  const handleSubmitComment = e => {
+    e.preventDefault();
+    setCommentsState([
+      ...commentsState,
+      { username: 'BobsUncle', text: inputText },
+    ]);
+    setInputText('');
+  };
 
   return (
     <Container>
       <CommentsContainer>
-        {comments.map(({ username, text }, i) => (
+        {commentsState.map(({ username, text }, i) => (
           <Comment key={i} username={username} text={text} />
         ))}
       </CommentsContainer>
       <TimeStamp>{timestamp}</TimeStamp>
       <Divider />
-      <InputForm>
+      <InputForm onSubmit={handleSubmitComment}>
         <CommentInput
           name="comment"
           value={inputText}
@@ -66,7 +76,7 @@ const CommentSection = ({ comments, timestamp }) => {
           placeholder="Add a comment..."
           onChange={e => setInputText(e.target.value)}
         />
-        <MessageButton />
+        <MessageButton onClick={handleSubmitComment} />
       </InputForm>
     </Container>
   );
