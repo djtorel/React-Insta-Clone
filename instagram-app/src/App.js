@@ -22,8 +22,19 @@ class App extends Component {
     super();
     this.state = {
       posts: [],
+      searchTerm: '',
+      filteredPosts: [],
     };
   }
+
+  searchHandler = searchTerm =>
+    this.setState({
+      filteredPosts: this.state.posts.filter(post =>
+        post.username.includes(searchTerm),
+      ),
+    });
+  setSearch = value => this.setState({ searchTerm: value });
+  useSearch = () => [this.state.searchTerm, this.setSearch, this.searchHandler];
 
   componentDidMount() {
     this.setState({ posts: dummyData });
@@ -31,15 +42,19 @@ class App extends Component {
 
   render() {
     const {
-      state: { posts },
+      state: { posts, searchTerm, filteredPosts },
+      useSearch,
     } = this;
     return (
       <Main>
         <MainContainer>
-          <SearchBar />
+          <SearchBar useSearch={useSearch} />
           <ContentContainer>
-            {posts.map((post, i) => (
-              <PostContainer post={post} key={i} />
+            {(filteredPosts.length > 0 || searchTerm.length > 0
+              ? filteredPosts
+              : posts
+            ).map(post => (
+              <PostContainer post={post} key={post.id} />
             ))}
           </ContentContainer>
         </MainContainer>

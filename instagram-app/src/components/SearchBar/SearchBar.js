@@ -12,7 +12,7 @@ const Header = styled.header.attrs({
   `,
 })``;
 
-const SearchBar = () => {
+const SearchBar = ({ useSearch }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const handleWindowWidth = () => setWindowWidth(window.innerWidth);
   useEffect(() => {
@@ -21,7 +21,7 @@ const SearchBar = () => {
   return (
     <Header>
       <LogoContainer windowWidth={windowWidth} />
-      <SearchInput />
+      <SearchInput useSearch={useSearch} />
       <NavContainer />
     </Header>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div.attrs({
@@ -30,9 +30,12 @@ const Input = styled.input.attrs({
   }
 `;
 
-const SearchInput = () => {
-  const [input, setInput] = useState('');
-  const handleInput = e => setInput(e.target.value);
+const SearchInput = ({ useSearch }) => {
+  const [input, setInput, searchHandler] = useSearch();
+  const handleInput = ({ target: { value } }) => {
+    setInput(value);
+    searchHandler(value);
+  };
   return (
     <Container>
       <SearchIcon />
