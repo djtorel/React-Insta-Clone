@@ -36,6 +36,22 @@ class App extends Component {
   setSearch = value => this.setState({ searchTerm: value });
   useSearch = () => [this.state.searchTerm, this.setSearch, this.searchHandler];
 
+  setComments = ({ postId, comment }) => {
+    this.setState({
+      posts: this.state.posts.map(post =>
+        post.id === postId
+          ? { ...post, comments: [...post.comments, comment] }
+          : post,
+      ),
+    });
+  };
+  findComments = ({ postId }) => {
+    return this.state.posts.filter(post => post.id === postId)[0].comments;
+  };
+  useComments = ({ postId }) => {
+    return [this.findComments({ postId }), this.setComments];
+  };
+
   componentDidMount() {
     this.setState({ posts: dummyData });
   }
@@ -44,6 +60,7 @@ class App extends Component {
     const {
       state: { posts, searchTerm, filteredPosts },
       useSearch,
+      useComments,
     } = this;
     return (
       <Main>
@@ -54,7 +71,12 @@ class App extends Component {
               ? filteredPosts
               : posts
             ).map(post => (
-              <PostContainer post={post} key={post.id} />
+              <PostContainer
+                post={post}
+                key={post.id}
+                id={post.id}
+                useComments={useComments}
+              />
             ))}
           </ContentContainer>
         </MainContainer>
@@ -64,4 +86,3 @@ class App extends Component {
 }
 
 export default App;
-// MVP Day 2 Completed

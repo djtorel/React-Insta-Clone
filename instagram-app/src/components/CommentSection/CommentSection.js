@@ -46,17 +46,21 @@ const MessageButton = styled.button.attrs({
   `,
 })``;
 
-const CommentSection = ({ comments, timestamp }) => {
+const CommentSection = ({ timestamp, postId, useComments }) => {
   const [inputText, setInputText] = useState('');
-  const [commentsState, setCommentsState] = useState(comments);
+  const [commentsState, setCommentsState] = useComments({ postId });
 
   const handleSubmitComment = e => {
     e.preventDefault();
     if (inputText.length > 0) {
-      setCommentsState([
-        ...commentsState,
-        { username: 'BobsUncle', text: inputText },
-      ]);
+      setCommentsState({
+        postId,
+        comment: {
+          id: Math.floor(Math.random() * 100000000) + Date.now(),
+          username: 'BobsUncle',
+          text: inputText,
+        },
+      });
       setInputText('');
     }
   };
@@ -64,8 +68,8 @@ const CommentSection = ({ comments, timestamp }) => {
   return (
     <Container>
       <CommentsContainer>
-        {commentsState.map(({ username, text }, i) => (
-          <Comment key={i} username={username} text={text} />
+        {commentsState.map(({ id, username, text }) => (
+          <Comment key={id} username={username} text={text} />
         ))}
       </CommentsContainer>
       <TimeStamp>{timestamp}</TimeStamp>
