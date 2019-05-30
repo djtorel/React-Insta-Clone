@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -40,9 +40,11 @@ const IconContainer = styled.div.attrs({
 })``;
 
 const Heart = styled.div.attrs({
-  className: `jam jam-heart mr-3`,
+  className: `mr-3 jam `,
 })`
   cursor: pointer;
+  ${({ liked, className }) =>
+    liked ? (className = `${className} jam-heart-f`) : `${className} jam-heart`}
 `;
 
 const MessageBubble = styled.div.attrs({
@@ -60,27 +62,38 @@ const LikesContainer = styled.div.attrs({
 
 const PostContainer = ({
   post: { username, thumbnailUrl, imageUrl, likes, timestamp, comments },
-}) => (
-  <Container>
-    <PostHeader>
-      <AuthorSection>
-        <AuthorImg src={thumbnailUrl} alt="" />
-        <AuthorName>{username}</AuthorName>
-      </AuthorSection>
-      <PostImg src={imageUrl} alt="" />
-      <LikesSection>
-        <IconContainer>
-          <Heart />
-          <MessageBubble />
-        </IconContainer>
-        <LikesContainer>
-          <div>{likes} likes</div>
-        </LikesContainer>
-      </LikesSection>
-    </PostHeader>
-    <CommentSection comments={comments} timestamp={timestamp} />
-  </Container>
-);
+}) => {
+  const [likeNumber, setLikeNumber] = useState(likes);
+  const [liked, setLiked] = useState(false);
+
+  const handleLikes = () => {
+    liked ? setLikeNumber(likeNumber - 1) : setLikeNumber(likeNumber + 1);
+    setLiked(!liked);
+  };
+  return (
+    <Container>
+      <PostHeader>
+        <AuthorSection>
+          <AuthorImg src={thumbnailUrl} alt="" />
+          <AuthorName>{username}</AuthorName>
+        </AuthorSection>
+        <PostImg src={imageUrl} alt="" />
+        <LikesSection>
+          <IconContainer>
+            <Heart
+              onClick={handleLikes}
+              liked={liked}
+              className={liked ? `jam-heart-f text-red-800` : `jam-heart`}
+            />
+            <MessageBubble />
+          </IconContainer>
+          <LikesContainer>{likeNumber} likes</LikesContainer>
+        </LikesSection>
+      </PostHeader>
+      <CommentSection comments={comments} timestamp={timestamp} />
+    </Container>
+  );
+};
 
 PostContainer.propTypes = {
   post: PropTypes.shape({
