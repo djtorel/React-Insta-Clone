@@ -36,7 +36,7 @@ class App extends Component {
   setSearch = value => this.setState({ searchTerm: value });
   useSearch = () => [this.state.searchTerm, this.setSearch, this.searchHandler];
 
-  setComments = ({ postId, comment }) => {
+  setComments = ({ postId, comment }) =>
     this.setState({
       posts: this.state.posts.map(post =>
         post.id === postId
@@ -44,13 +44,12 @@ class App extends Component {
           : post,
       ),
     });
-  };
-  findComments = ({ postId }) => {
-    return this.state.posts.filter(post => post.id === postId)[0].comments;
-  };
-  useComments = ({ postId }) => {
-    return [this.findComments({ postId }), this.setComments];
-  };
+  findComments = ({ postId }) =>
+    this.state.posts.filter(post => post.id === postId)[0].comments;
+  useComments = ({ postId }) => [
+    this.findComments({ postId }),
+    this.setComments,
+  ];
 
   componentDidMount() {
     this.setState({ posts: dummyData });
