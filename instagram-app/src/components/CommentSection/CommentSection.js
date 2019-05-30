@@ -52,11 +52,13 @@ const CommentSection = ({ comments, timestamp }) => {
 
   const handleSubmitComment = e => {
     e.preventDefault();
-    setCommentsState([
-      ...commentsState,
-      { username: 'BobsUncle', text: inputText },
-    ]);
-    setInputText('');
+    if (inputText.length > 0) {
+      setCommentsState([
+        ...commentsState,
+        { username: 'BobsUncle', text: inputText },
+      ]);
+      setInputText('');
+    }
   };
 
   return (
