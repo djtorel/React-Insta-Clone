@@ -51,7 +51,7 @@ const Input = styled.input.attrs({
 })``;
 
 const LoginButton = styled.button.attrs({
-  className: `w-full bg-gray-600 text-gray-200 py-2 self-stretch text-2xl rounded-b mt-2`,
+  className: `w-full bg-gray-600 text-gray-200 py-2 self-stretch text-2xl rounded-b mt-4`,
 })`
   font-family: Roboto;
 `;
