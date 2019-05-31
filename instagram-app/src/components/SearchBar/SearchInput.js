@@ -31,11 +31,7 @@ const Input = styled.input.attrs({
 `;
 
 const SearchInput = ({ useSearch }) => {
-  const [input, setInput, searchHandler] = useSearch();
-  const handleInput = ({ target: { value } }) => {
-    setInput(value);
-    searchHandler(value);
-  };
+  const [input, setInput] = useSearch();
   return (
     <Container>
       <SearchIcon />
@@ -44,7 +40,7 @@ const SearchInput = ({ useSearch }) => {
         placeholder="Search"
         type="text"
         value={input}
-        onChange={handleInput}
+        onChange={e => setInput(e.target.value)}
       />
     </Container>
   );

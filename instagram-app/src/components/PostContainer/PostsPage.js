@@ -29,19 +29,20 @@ class PostsPage extends Component {
     this.setState({ posts: JSON.parse(localStorage.getItem('posts')) });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, { searchTerm }) {
+    searchTerm !== this.state.searchTerm &&
+      this.setState({
+        filteredPosts: this.state.posts.filter(post =>
+          post.username.includes(this.state.searchTerm),
+        ),
+      });
+
     JSON.stringify(this.state.posts) !== localStorage.getItem('posts') &&
       localStorage.setItem('posts', JSON.stringify(this.state.posts));
   }
 
-  searchHandler = searchTerm =>
-    this.setState({
-      filteredPosts: this.state.posts.filter(post =>
-        post.username.includes(searchTerm),
-      ),
-    });
-  setSearch = value => this.setState({ searchTerm: value });
-  useSearch = () => [this.state.searchTerm, this.setSearch, this.searchHandler];
+  setSearch = searchTerm => this.setState({ searchTerm });
+  useSearch = () => [this.state.searchTerm, this.setSearch];
 
   setComments = postId => comments =>
     this.setState({
