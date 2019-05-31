@@ -36,7 +36,7 @@ const InputWrapper = styled.div.attrs({
 })``;
 
 const InputLabel = styled.label.attrs({
-  className: `block text-gray-800 text-lg mb-2`,
+  className: `block text-gray-800 mb-2 tracking-wider`,
 })`
   font-family: Roboto;
   font-weight: 600;
@@ -52,7 +52,7 @@ const Input = styled.input.attrs({
 
 const LoginButton = styled.button.attrs({
   className: `
-    w-full bg-gray-600 text-gray-200 py-2 self-stretch text-2xl rounded-b mt-4
+    w-full bg-gray-700 text-gray-400 py-2 self-stretch text-2xl rounded-b mt-4
     focus:outline-none
   `,
 })`
@@ -82,7 +82,7 @@ const LoginPage = ({ setLoggedIn }) => {
       <FormWrapper>
         <LoginForm onSubmit={handleLogin}>
           <InputWrapper>
-            <InputLabel>Login:</InputLabel>
+            <InputLabel>Login</InputLabel>
             <Input
               type="text"
               name="login"
@@ -92,7 +92,7 @@ const LoginPage = ({ setLoggedIn }) => {
             />
           </InputWrapper>
           <InputWrapper>
-            <InputLabel>Password:</InputLabel>
+            <InputLabel>Password</InputLabel>
             <Input
               type="password"
               name="password"
