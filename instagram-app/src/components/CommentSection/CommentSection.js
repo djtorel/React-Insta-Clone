@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -49,6 +49,11 @@ const MessageButton = styled.button.attrs({
 const CommentSection = ({ timestamp, postId, useComments }) => {
   const [inputText, setInputText] = useState('');
   const [commentsState, setCommentsState] = useComments(postId);
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    setUser(localStorage.getItem('user'));
+  }, []);
 
   const handleSubmitComment = e => {
     e.preventDefault();
@@ -57,7 +62,7 @@ const CommentSection = ({ timestamp, postId, useComments }) => {
         ...commentsState,
         {
           id: Math.floor(Math.random() * 100000000) + Date.now(),
-          username: 'BobsUncle',
+          username: user,
           text: inputText,
         },
       ]);
