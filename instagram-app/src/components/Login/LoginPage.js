@@ -48,7 +48,9 @@ const Input = styled.input.attrs({
     px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline
     bg-gray-400 shadow
   `,
-})``;
+})`
+  font-family: Roboto;
+`;
 
 const LoginButton = styled.button.attrs({
   className: `
