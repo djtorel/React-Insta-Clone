@@ -28,14 +28,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.localStorage.length === 0 &&
-      window.localStorage.setItem('posts', JSON.stringify(dummyData));
-    this.setState({ posts: JSON.parse(window.localStorage.getItem('posts')) });
+    !localStorage.posts &&
+      localStorage.setItem('posts', JSON.stringify(dummyData));
+    this.setState({ posts: JSON.parse(localStorage.getItem('posts')) });
   }
 
   componentDidUpdate() {
-    JSON.stringify(this.state.posts) !== window.localStorage.getItem('posts') &&
-      window.localStorage.setItem('posts', JSON.stringify(this.state.posts));
+    JSON.stringify(this.state.posts) !== localStorage.getItem('posts') &&
+      localStorage.setItem('posts', JSON.stringify(this.state.posts));
   }
 
   searchHandler = searchTerm =>
