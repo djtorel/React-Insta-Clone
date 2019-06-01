@@ -37,7 +37,9 @@ class PostsPage extends Component {
     searchTerm !== this.state.searchTerm &&
       this.setState({
         filteredPosts: this.state.posts.filter(post =>
-          post.username.includes(this.state.searchTerm),
+          post.username
+            .toLowerCase()
+            .includes(this.state.searchTerm.toLowerCase()),
         ),
       });
 
