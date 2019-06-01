@@ -20,13 +20,17 @@ class PostsPage extends Component {
       posts: [],
       searchTerm: '',
       filteredPosts: [],
+      likedPosts: [],
     };
   }
 
   componentDidMount() {
     !localStorage.posts &&
       localStorage.setItem('posts', JSON.stringify(dummyData));
-    this.setState({ posts: JSON.parse(localStorage.getItem('posts')) });
+    !localStorage.likedPosts && localStorage.setItem('likedPosts', '[]');
+
+    this.setState({ posts: JSON.parse(localStorage.posts) });
+    this.setState({ likedPosts: JSON.parse(localStorage.likedPosts) });
   }
 
   componentDidUpdate(prevProps, { searchTerm }) {
@@ -37,8 +41,11 @@ class PostsPage extends Component {
         ),
       });
 
-    JSON.stringify(this.state.posts) !== localStorage.getItem('posts') &&
+    JSON.stringify(this.state.posts) !== localStorage.posts &&
       localStorage.setItem('posts', JSON.stringify(this.state.posts));
+
+    JSON.stringify(this.state.likedPosts) !== localStorage.likedPosts &&
+      localStorage.setItem('likedPosts', JSON.stringify(this.state.likedPosts));
   }
 
   setSearch = searchTerm => this.setState({ searchTerm });
@@ -54,11 +61,15 @@ class PostsPage extends Component {
     this.state.posts.filter(post => post.id === postId)[0].comments;
   useComments = postId => [this.findComments(postId), this.setComments(postId)];
 
+  setLikedPosts = value => this.setState({ likedPosts: value });
+  useLikedPosts = () => [this.state.likedPosts, this.setLikedPosts];
+
   render() {
     const {
       state: { posts, searchTerm, filteredPosts },
       useSearch,
       useComments,
+      useLikedPosts,
     } = this;
     return (
       <MainContainer>
@@ -73,6 +84,7 @@ class PostsPage extends Component {
               key={post.id}
               id={post.id}
               useComments={useComments}
+              useLikedPosts={useLikedPosts}
             />
           ))}
         </ContentContainer>

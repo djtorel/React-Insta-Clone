@@ -64,14 +64,23 @@ const PostContainer = ({
   post: { username, thumbnailUrl, imageUrl, likes, timestamp, comments },
   id,
   useComments,
+  useLikedPosts,
 }) => {
-  const [likeNumber, setLikeNumber] = useState(likes);
-  const [liked, setLiked] = useState(false);
+  const [likedPosts, setLikedPosts] = useLikedPosts();
+  const [liked, setLiked] = useState(likedPosts.includes(id));
+  const [likeNumber, setLikeNumber] = useState(liked ? likes + 1 : likes);
 
   const handleLikes = () => {
-    liked ? setLikeNumber(likeNumber - 1) : setLikeNumber(likeNumber + 1);
+    if (liked) {
+      setLikeNumber(likeNumber - 1);
+      setLikedPosts(likedPosts.filter(postId => postId !== id));
+    } else {
+      setLikeNumber(likeNumber + 1);
+      setLikedPosts([...likedPosts, id]);
+    }
     setLiked(!liked);
   };
+
   return (
     <Container>
       <PostHeader>
