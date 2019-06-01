@@ -120,6 +120,8 @@ PostContainer.propTypes = {
     timestamp: PropTypes.string.isRequired,
     comments: PropTypes.array.isRequired,
   }),
+  useComments: PropTypes.func.isRequired,
+  useLikedPosts: PropTypes.func.isRequired,
 };
 
 export default PostContainer;

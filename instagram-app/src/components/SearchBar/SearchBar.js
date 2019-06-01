@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import LogoContainer from './LogoContainer';
@@ -25,6 +26,10 @@ const SearchBar = ({ useSearch }) => {
       <NavContainer />
     </Header>
   );
+};
+
+SearchBar.propTypes = {
+  useSearch: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
